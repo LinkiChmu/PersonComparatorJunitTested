@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +12,11 @@ public class Main {
         people.add(new Person("Руслан", "Кара Мурза Хоттаб", 20));
         people.add(new Person("Иван", "Петров", 45));
         System.out.println(people);
-        Collections.sort(people, new PersonComparator(3));
+        people.sort(new PersonComparator(3));
+        System.out.println(people);
+
+        Predicate<Person> filter = (Person p) -> (p.getAge() < 18);
+        people.removeIf(filter);
         System.out.println(people);
     }
 }
