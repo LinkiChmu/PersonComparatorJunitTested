@@ -10,10 +10,10 @@ public class Person implements Comparable<Person> {
     }
 
     @Override
-    public int compareTo(Person o) {
-        if (age < o.age) {
+    public int compareTo(Person other) {
+        if (age < other.age) {
             return -1;
-        } else if (age > o.age) {
+        } else if (age > other.age) {
             return 1;
         } else {
             return 0;

@@ -1,24 +1,28 @@
 import java.util.Comparator;
 
 public class PersonComparator implements Comparator<Person> {
-    private int maxNumberWordsToCompare;
+    private final int MAX_SIZE;
+
+    public PersonComparator(int maxNumberWordsToCompare) {
+        this.MAX_SIZE = maxNumberWordsToCompare;
+    }
 
     @Override
     public int compare(Person o1, Person o2) {
-        // compare numbers or words in surnames of persons
-        int nobility1 = o1.getSurname().split("(?U)\\W+").length;
-        int nobility2 = o2.getSurname().split("(?U)\\W+").length;
+        // count numbers or words in surnames of persons
+        int nameSize1 = o1.getSurname().split("(?U)\\W+").length;
+        int nameSize2 = o2.getSurname().split("(?U)\\W+").length;
         // if both surnames consist of the number of words not less than the maximum, compare them by age
-        if (nobility1 >= maxNumberWordsToCompare && nobility2 >= maxNumberWordsToCompare) {
+        // using overridden for Person method 'compareTo'
+        if (nameSize1 >= MAX_SIZE && nameSize2 >= MAX_SIZE) {
             return o1.compareTo(o2);
+        // else compare persons by the name size
         } else {
-            int compareNobility = Integer.compare(nobility1, nobility2);
+            int compareNameSize = Integer.compare(nameSize1, nameSize2);
             // if they equal, compare ages of persons
-            return (compareNobility == 0) ? o1.compareTo(o2) : compareNobility;
+            return (compareNameSize == 0) ? o1.compareTo(o2) : compareNameSize;
         }
     }
 
-    public PersonComparator(int maxNumberWordsToCompare) {
-        this.maxNumberWordsToCompare = maxNumberWordsToCompare;
-    }
+
 }
