@@ -4,9 +4,9 @@ public class Person implements Comparable<Person> {
     private int age;
 
     public Person(String name, String surname, int age) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
+            this.name = name;
+            this.surname = surname;
+            this.age = age;
     }
 
     @Override

@@ -15,12 +15,5 @@ public class Main {
         people.sort(new PersonComparator(3));
         System.out.println(people);
 
-        System.out.println(adultOnly(people));
-    }
-    public static List<Person> adultOnly(List<Person> people) {
-        List <Person> adults = people.stream()
-                .filter(person -> (person.getAge() >= 18))
-                .collect(Collectors.toList());
-        return adults;
     }
 }
