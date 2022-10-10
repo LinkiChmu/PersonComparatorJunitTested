@@ -56,4 +56,12 @@ public class PersonTest {
                         1)
                 );
     }
+
+    @DisplayName("Testing when the argument is null")
+    @Test
+    void compareTo() {
+        Person person = new Person("Ivan", "The Terrible", 54);
+        Person other = null;
+        Assertions.assertThrows(NullPointerException.class, () -> person.compareTo(other));
+    }
 }
